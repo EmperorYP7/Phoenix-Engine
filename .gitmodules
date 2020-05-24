@@ -1,0 +1,6 @@
+[submodule "Phoenix/vendor/spdlog"]
+	path = Phoenix/vendor/spdlog
+	url = https://github.com/gabime/spdlog
+[submodule "Phoenix/vendor/GLFW"]
+	path = Phoenix/vendor/GLFW
+	url = https://github.com/TheCherno/GLFW
