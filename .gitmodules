@@ -4,3 +4,6 @@
 [submodule "Phoenix/vendor/GLFW"]
 	path = Phoenix/vendor/GLFW
 	url = https://github.com/TheCherno/GLFW
+[submodule "Phoenix/vendor/glfw"]
+	path = Phoenix/vendor/glfw
+	url = https://github.com/TheCherno/glfw
