@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Phoenix/Events/Event.h"
+#include "Event.h"
 
 namespace Phoenix
 {
