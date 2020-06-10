@@ -1,7 +1,6 @@
 #include "PXpch.h"
-#include "Application.h"
-#include "Phoenix/Events/ApplicationEvent.h"
-#include "Log.h"
+#include "Application.hpp"
+#include "Phoenix/Events/ApplicationEvent.hpp"
 
 namespace Phoenix {
 

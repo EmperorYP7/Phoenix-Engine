@@ -1,14 +1,14 @@
 #pragma once
 
-#include "Core.h"
-#include "Events/Event.h"
-#include "Window.h"
+#include "Core.hpp"
+#include "Events/Event.hpp"
+#include "Window.hpp"
 
 namespace Phoenix 
 {
 	class PX_API Application
 	{
-		public:
+	public:
 		Application();
 		virtual ~Application();
 

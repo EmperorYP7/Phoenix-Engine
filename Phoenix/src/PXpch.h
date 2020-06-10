@@ -11,6 +11,8 @@
 #include <sstream>
 #include <utility>
 
+#include "Phoenix/Log.hpp"
+
 #ifdef PX_WINDOWS_PLATFORM
-	#include <Windows.h>
+	#include <Window.hpp>
 #endif

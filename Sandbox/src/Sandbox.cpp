@@ -1,4 +1,4 @@
-#include <Phoenix.h>
+#include <Phoenix.hpp>
 
 class Sandbox : public Phoenix::Application
 {

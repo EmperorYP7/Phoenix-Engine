@@ -1,9 +1,8 @@
 #include "PXpch.h"
-#include "Platform/Windows/WindowsWin.h"
-#include "Phoenix.h"
-#include "Phoenix/Events/ApplicationEvent.h"
-#include "Phoenix/Events/MouseEvent.h"
-#include "Phoenix/Events/KeyboardEvent.h"
+#include "Platform/Windows/WindowsWin.hpp"
+#include "Phoenix/Events/ApplicationEvent.hpp"
+#include "Phoenix/Events/MouseEvent.hpp"
+#include "Phoenix/Events/KeyboardEvent.hpp"
 
 
 namespace Phoenix

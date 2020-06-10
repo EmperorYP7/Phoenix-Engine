@@ -1,5 +1,5 @@
 #include "PXpch.h"
-#include "Log.h"
+#include "Log.hpp"
 #include "spdlog/sinks/stdout_color_sinks.h"
 
 namespace Phoenix

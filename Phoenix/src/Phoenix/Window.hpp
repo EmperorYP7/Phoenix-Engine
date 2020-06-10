@@ -1,7 +1,7 @@
 #pragma once
 #include "PXpch.h"
-#include "Phoenix/Core.h"
-#include "Phoenix/Events/Event.h"
+#include "Phoenix/Core.hpp"
+#include "Phoenix/Events/Event.hpp"
 
 namespace Phoenix {
 

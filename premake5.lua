@@ -1,5 +1,6 @@
 workspace "Phoenix"
 	architecture "x64"
+	startproject "Sandbox"
 
 	configurations
 	{
@@ -12,6 +13,9 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "Phoenix/vendor/GLFW/include"
+
+group "Dependencies"
+	include "Phoenix/vendor/GLFW"
 
 include "Phoenix/vendor/GLFW"
 
@@ -79,6 +83,7 @@ project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	cppdialect "C++17"
 
 	targetdir("bin/" .. outputdir .. "/%{prj.name}")
 	objdir("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -92,7 +97,8 @@ project "Sandbox"
 	includedirs
 	{
 		"Phoenix/vendor/spdlog/include",
-		"Phoenix/src"
+		"Phoenix/src",
+		"Phoenix/vendor"
 	}
 
 	links

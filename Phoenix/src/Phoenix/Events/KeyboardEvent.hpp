@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Event.h"
+#include "Event.hpp"
 
 
 namespace Phoenix {
@@ -16,7 +16,6 @@ namespace Phoenix {
 		KeyEvent(int keycode)
 			:m_KeyCode(keycode)
 		{
-
 		}
 
 		int m_KeyCode;
@@ -50,7 +49,6 @@ namespace Phoenix {
 		KeyReleasedEvent(int key)
 			: KeyEvent(key)
 		{
-
 		}
 		
 		std::string ToString() const override

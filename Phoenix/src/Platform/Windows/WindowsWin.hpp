@@ -1,5 +1,5 @@
 #pragma once
-#include "Phoenix/Window.h"
+#include "Phoenix/Window.hpp"
 #include <GLFW/glfw3.h>
 
 namespace Phoenix
@@ -34,7 +34,6 @@ namespace Phoenix
 			std::string Title;
 			unsigned int Width, Height;
 			bool VSync;
-
 			EventCallbackFn EventCallback;
 		};
 
