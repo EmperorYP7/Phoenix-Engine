@@ -14,13 +14,11 @@ namespace Phoenix {
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(PX_EVENT_BIND(OnWindowClose));
-
 		PX_CORE_TRACE("{0}", e);
 	}
 
 	Application::~Application()
 	{
-
 	}
 
 	void Application::Run()
