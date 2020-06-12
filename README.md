@@ -1,13 +1,12 @@
-# Phoenix
-Phoenix Game Engine
+# Phoenix Engine
 
-The engine aims for faster 2D rendering using OpenGL with glfw library.
+The engine aims for faster 2D rendering using OpenGL with Glfw library.
 
 This engine is inspired by TheCherno's Hazel Engine. The engine uses extensive and core Visual C++.
 
-Click on `Generate.bat` file to create a Solution in the main directory. 
+Click on `Generate.bat` file to create a MSVS Solution in the main directory.
 
-You can access the engine with Microsoft&copy; Visual Studio Community 2019.
+You can access the engine with Microsoft&copy; [Visual Studio Community 2019](https://visualstudio.microsoft.com/downloads/).
 
 The developers using the engine must include the engine's logo in their projects.
 
