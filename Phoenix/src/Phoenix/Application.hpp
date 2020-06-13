@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Core.hpp"
 #include "Events/Event.hpp"
 #include "LayerStack.hpp"
