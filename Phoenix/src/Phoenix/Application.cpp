@@ -14,7 +14,23 @@ namespace Phoenix {
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(PX_EVENT_BIND(OnWindowClose));
-		PX_CORE_TRACE("{0}", e);
+
+		for (auto i = m_LayerStack.end(); i != m_LayerStack.begin();)
+		{
+			(*--i)->OnEvent(e);
+			if (e.Handled)
+				break;
+		}
+	}
+
+	void Application::PushLayer(Layer* layer)
+	{
+		m_LayerStack.PushLayer(layer);
+	}
+
+	void Application::PushOverlay(Layer* overlay)
+	{
+		m_LayerStack.PushOverlay(overlay);
 	}
 
 	Application::~Application()
@@ -25,6 +41,9 @@ namespace Phoenix {
 	{
 		while (m_Running)
 		{
+			for (Layer* layer : m_LayerStack)
+				layer->OnUpdate();
+
 			m_Window->OnUpdate();
 		}
 	}

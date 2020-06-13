@@ -67,14 +67,17 @@ project "Phoenix"
 
 		filter "configurations:Debug"
 			defines "PX_DEBUG"
+			buildoptions "/MDd"
 			symbols "On"
 
 		filter "configurations:Release"
 			defines "PX_RELEASE"
+			buildoptions "/MD"
 			optimize "On"
 
 		filter "configurations:Final"
 			defines "PX_FINAL"
+			buildoptions "/MD"
 			optimize "On"
 
 
@@ -118,12 +121,15 @@ project "Sandbox"
 
 		filter "configurations:Debug"
 			defines "PX_DEBUG"
+			buildoptions "/MDd"
 			symbols "On"
 
 		filter "configurations:Release"
 			defines "PX_RELEASE"
+			buildoptions "/MD"
 			optimize "On"
 
 		filter "configurations:Final"
 			defines "PX_FINAL"
+			buildoptions "/MD"
 			optimize "On"

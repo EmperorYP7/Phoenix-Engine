@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Phoenix/Application.hpp"
+#include "Phoenix/Layer.hpp"
 #include "Phoenix/Log.hpp"
 
 
