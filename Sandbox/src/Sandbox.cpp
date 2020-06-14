@@ -10,7 +10,7 @@ public:
 
 	void OnUpdate() override
 	{
-		PX_INFO("ExapleLayer::Update");
+		PX_CORE_INFO("ExampleLayer is updated!");
 	}
 
 	void OnEvent(Phoenix::Event& e) override
