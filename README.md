@@ -4,7 +4,7 @@ The engine aims for faster 2D rendering using OpenGL with Glfw library
 
 This engine is inspired by TheCherno's Hazel Engine. The engine uses extensive and core MS Visual C++.
 
-I'll add OpenGL implementations soon. The engine is infant at this stage.
+I'll add OpenGL implementations soon. The engine is infant at this stage..
 
 Click on `Generate.bat` file to create a MSVS Solution in the main directory.
 
