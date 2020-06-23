@@ -5,8 +5,12 @@ namespace Phoenix {
 
 #define PX_EVENT_BIND(x) std::bind(&Application::x, this, std::placeholders::_1)
 
+	Application* Application::m_Instance = nullptr;
+
 	Application::Application()
 	{
+		PX_CORE_ASSERT(!m_Instance, "Application already exists!");
+		m_Instance = this;
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(PX_EVENT_BIND(OnEvent));
 	}
@@ -26,11 +30,13 @@ namespace Phoenix {
 	void Application::PushLayer(Layer* layer)
 	{
 		m_LayerStack.PushLayer(layer);
+		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* overlay)
 	{
 		m_LayerStack.PushOverlay(overlay);
+		overlay->OnAttach();
 	}
 
 	Application::~Application()

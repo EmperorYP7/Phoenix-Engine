@@ -14,6 +14,7 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["Glad"] = "Phoenix/vendor/Glad/include"
 IncludeDir["GLFW"] = "Phoenix/vendor/GLFW/include"
+IncludeDir["ImGui"] = "Phoenix/vendor/ImGui"
 
 group "Dependencies"
 	include "Phoenix/vendor/GLFW"
@@ -21,6 +22,7 @@ group "Dependencies"
 
 include "Phoenix/vendor/GLFW"
 include "Phoenix/vendor/Glad"
+include "Phoenix/vendor/ImGui"
 
 project "Phoenix"
 	location "Phoenix"
@@ -44,14 +46,16 @@ project "Phoenix"
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
-		"%{IncludeDir.Glad}"
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 
 	links
 	{
 		"GLFW",
 		"opengl32.lib",
-		"GLAD"
+		"GLAD",
+		"ImGui"
 	}
 
 	filter "system:windows"

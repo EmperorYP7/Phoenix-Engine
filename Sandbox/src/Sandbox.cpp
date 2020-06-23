@@ -10,7 +10,6 @@ public:
 
 	void OnUpdate() override
 	{
-		PX_CORE_INFO("ExampleLayer is updated!");
 	}
 
 	void OnEvent(Phoenix::Event& e) override
@@ -25,6 +24,7 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
+		PushOverlay(new Phoenix::ImGuiLayer());
 	}
 
 	~Sandbox()

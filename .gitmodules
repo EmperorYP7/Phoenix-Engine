@@ -7,3 +7,6 @@
 [submodule "Phoenix/vendor/glfw"]
 	path = Phoenix/vendor/glfw
 	url = https://github.com/TheCherno/glfw
+[submodule "Phoenix/vendor/Imgui"]
+	path = Phoenix/vendor/Imgui
+	url = https://github.com/TheCherno/imgui.git
