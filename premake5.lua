@@ -12,12 +12,15 @@ workspace "Phoenix"
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
+IncludeDir["Glad"] = "Phoenix/vendor/Glad/include"
 IncludeDir["GLFW"] = "Phoenix/vendor/GLFW/include"
 
 group "Dependencies"
 	include "Phoenix/vendor/GLFW"
+	include "Phoenix/vendor/Glad"
 
 include "Phoenix/vendor/GLFW"
+include "Phoenix/vendor/Glad"
 
 project "Phoenix"
 	location "Phoenix"
@@ -40,13 +43,15 @@ project "Phoenix"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links
 	{
 		"GLFW",
-		"opengl32.lib"
+		"opengl32.lib",
+		"GLAD"
 	}
 
 	filter "system:windows"
@@ -57,7 +62,8 @@ project "Phoenix"
 		defines
 		{
 			"PX_PLATFORM_WINDOWS",
-			"PX_BUILD_DLL"
+			"PX_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands

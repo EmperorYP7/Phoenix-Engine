@@ -1,6 +1,7 @@
 #pragma once
 #include "Phoenix/Window.hpp"
-#include <GLFW/glfw3.h>
+
+#include<GLFW/glfw3.h>
 
 namespace Phoenix
 {
