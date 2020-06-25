@@ -2,6 +2,7 @@
 
 #include "Phoenix/Layer.hpp"
 #include "Phoenix/Events/KeyboardEvent.hpp"
+#include "Phoenix/Events/ApplicationEvent.hpp"
 #include "Phoenix/Events/MouseEvent.hpp"
 
 namespace Phoenix {
@@ -17,13 +18,13 @@ namespace Phoenix {
 		void OnAttach();
 		void OnDetach();
 	private:
-		void OnEvent(Event& e);
 		bool OnWindowResizeEvent(WindowResizeEvent& e);
 		bool OnKeyPressedEvent(KeyPressedEvent& e);
-		//bool OnKeyTypedEvent(KeyPressedEvent& e);
+		bool OnKeyTypedEvent(KeyTypedEvent& e);
 		bool OnKeyReleasedEvent(KeyReleasedEvent& e);
 		bool OnMouseButtonPressedEvent(MouseButtonPressedEvent& e);
 		bool OnMouseButtonReleasedEvent(MouseButtonReleasedEvent& e);
+		bool OnMouseMovedEvent(MouseMovedEvent& e);
 		bool OnMouseScrollEvent(MouseScrollEvent& e);
 		float m_Time;
 	};

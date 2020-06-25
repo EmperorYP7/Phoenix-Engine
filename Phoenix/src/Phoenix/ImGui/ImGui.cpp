@@ -1,9 +1,11 @@
 #include "PXpch.h"
 #include "ImGui.hpp"
+#include "Phoenix/Core.hpp"
 
 #include "imgui.h"
 #include "Platform/OpenGL/ImGuiOpenGLRenderer.h"
 #include "GLFW/glfw3.h"
+#include "glad/glad.h"
 
 #include"Phoenix/Application.hpp"
 
@@ -17,38 +19,88 @@ namespace Phoenix {
 	void ImGuiLayer::OnEvent(Event& e)
 	{
 		EventDispatcher dispatcher(e);
-		dispatcher.Dispatch<
+		dispatcher.Dispatch<WindowResizeEvent>(PX_BIND_EVENT(ImGuiLayer::OnWindowResizeEvent));
+		dispatcher.Dispatch<KeyPressedEvent>(PX_BIND_EVENT(ImGuiLayer::OnKeyPressedEvent));
+		dispatcher.Dispatch<KeyTypedEvent>(PX_BIND_EVENT(ImGuiLayer::OnKeyTypedEvent));
+		dispatcher.Dispatch<KeyReleasedEvent>(PX_BIND_EVENT(ImGuiLayer::OnKeyReleasedEvent));
+		dispatcher.Dispatch<MouseButtonPressedEvent>(PX_BIND_EVENT(ImGuiLayer::OnMouseButtonPressedEvent));
+		dispatcher.Dispatch<MouseButtonReleasedEvent>(PX_BIND_EVENT(ImGuiLayer::OnMouseButtonReleasedEvent));
+		dispatcher.Dispatch<MouseScrollEvent>(PX_BIND_EVENT(ImGuiLayer::OnMouseScrollEvent));
+		dispatcher.Dispatch<MouseMovedEvent>(PX_BIND_EVENT(ImGuiLayer::OnMouseMovedEvent));
 	}
 
 	bool ImGuiLayer::OnWindowResizeEvent(WindowResizeEvent& e)
 	{
+		ImGuiIO& io = ImGui::GetIO();
+		io.DisplaySize = ImVec2(e.GetWidth(), e.GetHeight());
+		io.DisplayFramebufferScale = ImVec2(1.0f, 1.0f);
+		glViewport(0, 0, e.GetWidth(), e.GetHeight());
 
+		return false;
 	}
 
 	bool ImGuiLayer::OnKeyPressedEvent(KeyPressedEvent& e)
 	{
+		ImGuiIO& io = ImGui::GetIO();
+		io.KeysDown[e.GetKeyCode()] = true;
 
+		io.KeyCtrl = io.KeysDown[GLFW_KEY_LEFT_CONTROL] || io.KeysDown[GLFW_KEY_RIGHT_CONTROL];
+		io.KeyShift = io.KeysDown[GLFW_KEY_LEFT_SHIFT] || io.KeysDown[GLFW_KEY_RIGHT_SHIFT];
+		io.KeyAlt = io.KeysDown[GLFW_KEY_LEFT_ALT] || io.KeysDown[GLFW_KEY_RIGHT_ALT];
+		io.KeySuper = io.KeysDown[GLFW_KEY_LEFT_SUPER] || io.KeysDown[GLFW_KEY_RIGHT_SUPER];
+
+		return false;
 	}
-	//void OnKeyTypedEvent(KeyPressedEvent& e);
+	
+	bool ImGuiLayer::OnKeyTypedEvent(KeyTypedEvent& e)
+	{
+		ImGuiIO& io = ImGui::GetIO();
+		int c = e.GetKeyCode();
+		if (c > 0 && c < 0x10000)
+			io.AddInputCharacter((unsigned short)c);
+
+		return false;
+	}
 
 	bool ImGuiLayer::OnKeyReleasedEvent(KeyReleasedEvent& e)
 	{
+		ImGuiIO& io = ImGui::GetIO();
+		io.KeysDown[e.GetKeyCode()] = false;
 
+		return false;
 	}
 
 	bool ImGuiLayer::OnMouseButtonPressedEvent(MouseButtonPressedEvent& e)
 	{
+		ImGuiIO& io = ImGui::GetIO();
+		io.MouseDown[e.GetMouseButton()] = true;
 
+		return false;
 	}
 
 	bool ImGuiLayer::OnMouseButtonReleasedEvent(MouseButtonReleasedEvent& e)
 	{
+		ImGuiIO& io = ImGui::GetIO();
+		io.MouseDown[e.GetMouseButton()] = false;
 
+		return false;
+	}
+
+	bool ImGuiLayer::OnMouseMovedEvent(MouseMovedEvent& e)
+	{
+		ImGuiIO& io = ImGui::GetIO();
+		io.MousePos = ImVec2(e.GetX(), e.GetY());
+
+		return false;
 	}
 	
 	bool ImGuiLayer::OnMouseScrollEvent(MouseScrollEvent& e)
 	{
-
+		ImGuiIO& io = ImGui::GetIO();
+		io.MouseWheelH += e.GetXOffset();
+		io.MouseWheel += e.GetYOffset();
+		
+		return false;
 	}
 
 	ImGuiLayer::~ImGuiLayer()
@@ -74,11 +126,6 @@ namespace Phoenix {
 
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-	}
-
-	void ImGuiLayer::OnEvent(Event& e)
-	{
-
 	}
 
 	void ImGuiLayer::OnAttach()
