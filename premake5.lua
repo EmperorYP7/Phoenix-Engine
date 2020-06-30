@@ -19,15 +19,15 @@ IncludeDir["ImGui"] = "Phoenix/vendor/ImGui"
 group "Dependencies"
 	include "Phoenix/vendor/GLFW"
 	include "Phoenix/vendor/Glad"
+	include "Phoenix/vendor/ImGui"
 
-include "Phoenix/vendor/GLFW"
-include "Phoenix/vendor/Glad"
-include "Phoenix/vendor/ImGui"
+group ""
 
 project "Phoenix"
 	location "Phoenix"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "off"
 
 	targetdir("bin/" .. outputdir .. "/%{prj.name}")
 	objdir("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -72,22 +72,22 @@ project "Phoenix"
 
 		postbuildcommands
 		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 		}
 
 		filter "configurations:Debug"
 			defines "PX_DEBUG"
-			buildoptions "/MDd"
+			runtime "Debug"
 			symbols "On"
 
 		filter "configurations:Release"
 			defines "PX_RELEASE"
-			buildoptions "/MD"
+			runtime "Release"
 			optimize "On"
 
 		filter "configurations:Final"
 			defines "PX_FINAL"
-			buildoptions "/MD"
+			runtime "Release"
 			optimize "On"
 
 
@@ -97,6 +97,7 @@ project "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
 	cppdialect "C++17"
+	staticruntime "off"
 
 	targetdir("bin/" .. outputdir .. "/%{prj.name}")
 	objdir("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -131,15 +132,15 @@ project "Sandbox"
 
 		filter "configurations:Debug"
 			defines "PX_DEBUG"
-			buildoptions "/MDd"
+			runtime "Debug"
 			symbols "On"
 
 		filter "configurations:Release"
 			defines "PX_RELEASE"
-			buildoptions "/MD"
+			runtime "Release"
 			optimize "On"
 
 		filter "configurations:Final"
 			defines "PX_FINAL"
-			buildoptions "/MD"
+			runtime "Release"
 			optimize "On"
