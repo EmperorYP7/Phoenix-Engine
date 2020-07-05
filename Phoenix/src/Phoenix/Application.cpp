@@ -1,5 +1,6 @@
 #include "PXpch.h"
 #include "Application.hpp"
+#include "Input.hpp"
 
 namespace Phoenix {
 
@@ -41,6 +42,7 @@ namespace Phoenix {
 
 	Application::~Application()
 	{
+
 	}
 
 	void Application::Run()
