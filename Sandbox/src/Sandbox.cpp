@@ -10,11 +10,19 @@ public:
 
 	void OnUpdate() override
 	{
+		if (Phoenix::Input::IsKeyPressed(PX_KEY_TAB))
+			PX_TRACE("Tab key is pressed (poll)!");
 	}
 
 	void OnEvent(Phoenix::Event& e) override
 	{
-		PX_TRACE("{0}", e);
+		if (e.GetEventType() == Phoenix::EventType::KeyPressed)
+		{
+			Phoenix::KeyPressedEvent& event = (Phoenix::KeyPressedEvent&)e;
+			if (event.GetKeyCode() == PX_KEY_TAB)
+				PX_TRACE("Tab key is pressed (event)!");
+			PX_TRACE("{0}", (char)event.GetKeyCode());
+		}
 	}
 };
 
