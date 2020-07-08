@@ -15,6 +15,7 @@ IncludeDir = {}
 IncludeDir["Glad"] = "Phoenix/vendor/Glad/include"
 IncludeDir["GLFW"] = "Phoenix/vendor/GLFW/include"
 IncludeDir["ImGui"] = "Phoenix/vendor/ImGui"
+IncludeDir["glm"] = "Phoenix/vendor/glm"
 
 group "Dependencies"
 	include "Phoenix/vendor/GLFW"
@@ -37,8 +38,11 @@ project "Phoenix"
 
 	files
 	{
+		"%{prj.name}/src/**.hpp",
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl",
 	}
 
 	includedirs
@@ -47,7 +51,8 @@ project "Phoenix"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -104,7 +109,7 @@ project "Sandbox"
 
 	files
 	{
-		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.hpp",
 		"%{prj.name}/src/**.cpp"
 	}
 
@@ -112,7 +117,8 @@ project "Sandbox"
 	{
 		"Phoenix/vendor/spdlog/include",
 		"Phoenix/src",
-		"Phoenix/vendor"
+		"Phoenix/vendor",
+		"%{IncludeDir.glm}"
 	}
 
 	links
