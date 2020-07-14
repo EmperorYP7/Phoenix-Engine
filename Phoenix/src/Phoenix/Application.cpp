@@ -14,6 +14,7 @@ namespace Phoenix {
 		m_Instance = this;
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(PX_EVENT_BIND(OnEvent));
+		m_ImGuiLayer = std::make_unique<ImGuiLayer>();
 	}
 	void Application::OnEvent(Event& e)
 	{
@@ -51,6 +52,11 @@ namespace Phoenix {
 		{
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
+			
+			m_ImGuiLayer->Begin();
+			for (Layer* layer : m_LayerStack)
+				layer->OnImGuiRender();
+			m_ImGuiLayer->End();
 
 			m_Window->OnUpdate();
 		}

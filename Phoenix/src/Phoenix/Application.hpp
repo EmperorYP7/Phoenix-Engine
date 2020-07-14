@@ -4,6 +4,7 @@
 #include "LayerStack.hpp"
 #include "Phoenix/Events/ApplicationEvent.hpp"
 #include "Window.hpp"
+#include "Phoenix/ImGui/ImGui.hpp"
 
 namespace Phoenix 
 {
@@ -26,6 +27,7 @@ namespace Phoenix
 		bool OnWindowClose(WindowCloseEvent& e);
 		static Application* m_Instance;
 		std::unique_ptr<Window> m_Window;
+		std::unique_ptr<ImGuiLayer> m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 	};
