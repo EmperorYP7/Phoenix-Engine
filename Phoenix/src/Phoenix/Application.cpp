@@ -1,5 +1,9 @@
 #include "PXpch.h"
 #include "Application.hpp"
+#include "Log.hpp"
+
+#include <glad/glad.h>
+
 #include "Input.hpp"
 
 namespace Phoenix {
@@ -14,7 +18,8 @@ namespace Phoenix {
 		m_Instance = this;
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(PX_EVENT_BIND(OnEvent));
-		m_ImGuiLayer = std::make_unique<ImGuiLayer>();
+		auto m_ImGuiLayer = new ImGuiLayer();
+		PushOverlay(m_ImGuiLayer);
 	}
 	void Application::OnEvent(Event& e)
 	{
@@ -50,6 +55,9 @@ namespace Phoenix {
 	{
 		while (m_Running)
 		{
+			glClearColor(0, 0, 0, 1);
+			glClear(GL_COLOR_BUFFER_BIT);
+
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
 			

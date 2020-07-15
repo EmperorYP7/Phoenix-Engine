@@ -10,8 +10,7 @@ public:
 
 	void OnUpdate() override
 	{
-		if (Phoenix::Input::IsKeyPressed(PX_KEY_TAB))
-			PX_TRACE("Tab key is pressed (poll)!");
+		
 	}
 
 	void OnEvent(Phoenix::Event& e) override

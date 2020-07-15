@@ -19,7 +19,7 @@ namespace Phoenix {
 		void End();
 	private:
 		
-		float m_Time;
+		float m_Time = 0.0f;
 	};
 
 }
