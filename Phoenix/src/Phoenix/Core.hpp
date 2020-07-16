@@ -1,13 +1,17 @@
 #pragma once
 
 #ifdef PX_PLATFORM_WINDOWS
+#if PX_DL
 	#ifdef PX_BUILD_DLL
 		#define PX_API __declspec(dllexport)
 	#else
 		#define PX_API __declspec(dllimport)
 	#endif
+#else
+#define PX_API
+#endif
 #else 
-#error Phoenix is Windows only!
+   #error Phoenix is Windows only!
 #endif
 
 #define SEL(x) (1 << x)
