@@ -3,8 +3,7 @@
 #include "Phoenix/Events/ApplicationEvent.hpp"
 #include "Phoenix/Events/MouseEvent.hpp"
 #include "Phoenix/Events/KeyboardEvent.hpp"
-
-#include <glad/glad.h>
+#include "Platform/OpenGL/OpenGLContext.hpp"
 
 
 namespace Phoenix
@@ -49,9 +48,9 @@ namespace Phoenix
 			s_GLFWInitialized = true;
 		}
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(m_Window);
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		PX_CORE_ASSERT(status, "Failed to load Glad!");
+		
+		m_Context = new OpenGLContext(m_Window);
+		m_Context->Init();
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 		
@@ -151,7 +150,6 @@ namespace Phoenix
 	void WindowsWin::OnUpdate()
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window);
 	}
 
 	void WindowsWin::SetVSync(bool enabled)

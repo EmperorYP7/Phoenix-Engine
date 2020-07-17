@@ -1,13 +1,27 @@
 #pragma once
 #include "Phoenix/Window.hpp"
+#include "Phoenix/Renderer/RenderContext.hpp"
 
-#include<GLFW/glfw3.h>
+struct GLFWwindow;
 
 namespace Phoenix
 {
 
 	class WindowsWin : public Window
 	{
+	private:
+		GLFWwindow* m_Window;
+		RendererContext* m_Context;
+
+		struct WindowData
+		{
+			std::string Title;
+			unsigned int Width, Height;
+			bool VSync;
+			EventCallbackFn EventCallback;
+		};
+
+		WindowData m_Data;
 	public:
 		WindowsWin(const WindowProps& props);
 		virtual ~WindowsWin();
@@ -28,18 +42,6 @@ namespace Phoenix
 	private:
 		virtual void Init(const WindowProps& props);
 		virtual void Shutdown();
-	private:
-		GLFWwindow* m_Window;
-
-		struct WindowData
-		{
-			std::string Title;
-			unsigned int Width, Height;
-			bool VSync;
-			EventCallbackFn EventCallback;
-		};
-
-		WindowData m_Data;
 	};
 
 }
