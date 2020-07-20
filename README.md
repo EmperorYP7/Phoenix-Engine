@@ -1,6 +1,6 @@
 # Phoenix Engine
 
-The engine aims for faster 2D rendering using OpenGL with Glfw library
+The engine aims for faster 2D rendering using OpenGL (as of now) with Glfw window and ImGui interface.
 
 This engine is inspired by TheCherno's Hazel Engine. The engine uses extensive and core MS Visual C++.
 
