@@ -1,21 +1,23 @@
-#include <PXpch.h>
+#include "PXpch.h"
 #include "OpenGLContext.hpp"
-#include<GLFW/glfw3.h>
-#include <glad/glad.h>
 
-namespace Phoenix
-{
-	OpenGLContext::OpenGLContext(GLFWwindow* window)
-		:m_WindowHandle(window)
+#include <GLFW/glfw3.h>
+#include <glad/glad.h>
+#include <GL/GL.h>
+
+namespace Phoenix {
+
+	OpenGLContext::OpenGLContext(GLFWwindow* windowHandle)
+		: m_WindowHandle(windowHandle)
 	{
-		PX_CORE_ASSERT(window, "Window is null!");
+		PX_CORE_ASSERT(windowHandle, "Window handle is null!")
 	}
 
 	void OpenGLContext::Init()
 	{
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		PX_CORE_ASSERT(status, "Failed to load Glad!");
+		PX_CORE_ASSERT(status, "Failed to initialize Glad!");
 	}
 
 	void OpenGLContext::SwapBuffers()
@@ -23,8 +25,4 @@ namespace Phoenix
 		glfwSwapBuffers(m_WindowHandle);
 	}
 
-	OpenGLContext::~OpenGLContext()
-	{
-
-	}
 }
