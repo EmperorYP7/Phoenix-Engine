@@ -11,7 +11,7 @@ namespace Phoenix
 	{
 	private:
 		GLFWwindow* m_Window;
-		RendererContext* m_Context;
+		RenderContext* m_Context;
 
 		struct WindowData
 		{

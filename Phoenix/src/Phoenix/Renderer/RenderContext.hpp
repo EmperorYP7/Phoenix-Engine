@@ -4,7 +4,7 @@
 
 namespace Phoenix
 {
-	class PX_API RendererContext
+	class PX_API RenderContext
 	{
 	public:
 		virtual void Init() = 0;

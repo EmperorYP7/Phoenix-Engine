@@ -4,7 +4,7 @@
 #include "Phoenix/Events/MouseEvent.hpp"
 #include "Phoenix/Events/KeyboardEvent.hpp"
 #include "Platform/OpenGL/OpenGLContext.hpp"
-
+#include <GLFW/glfw3.h>
 
 namespace Phoenix
 {
@@ -150,6 +150,7 @@ namespace Phoenix
 	void WindowsWin::OnUpdate()
 	{
 		glfwPollEvents();
+		m_Context->SwapBuffers();
 	}
 
 	void WindowsWin::SetVSync(bool enabled)
