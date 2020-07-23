@@ -10,7 +10,6 @@ public:
 
 	void OnUpdate() override
 	{
-		
 	}
 
 	void OnEvent(Phoenix::Event& e) override
