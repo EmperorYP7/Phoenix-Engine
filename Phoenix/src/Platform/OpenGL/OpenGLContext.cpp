@@ -18,6 +18,11 @@ namespace Phoenix {
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		PX_CORE_ASSERT(status, "Failed to initialize Glad!");
+
+		PX_CORE_INFO("Open GL Renderer :");
+		PX_CORE_INFO("     Vendor : {0}", glGetString(GL_VENDOR));
+		PX_CORE_INFO("     Renderer : {0}", glGetString(GL_RENDERER));
+		PX_CORE_INFO("     Version : {0}", glGetString(GL_VERSION));
 	}
 
 	void OpenGLContext::SwapBuffers()
