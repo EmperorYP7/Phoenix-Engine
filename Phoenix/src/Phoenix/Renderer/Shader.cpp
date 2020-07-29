@@ -65,7 +65,8 @@ namespace Phoenix
 			glDeleteShader(vertexShader);
 
 			// Use the infoLog as you see fit.
-
+			PX_CORE_ERROR("{0}", infoLog.data());
+			PX_CORE_ASSERT(false, "Fragment Shader compilation failure!");
 			// In this simple program, we'll just leave
 			return;
 		}
