@@ -1,10 +1,8 @@
 #include "PXpch.h"
 #include "Application.hpp"
 #include "Log.hpp"
-
-#include <glad/glad.h>
-
 #include "Input.hpp"
+#include "Renderer/Renderer.hpp"
 
 namespace Phoenix {
 
@@ -144,25 +142,22 @@ namespace Phoenix {
 		overlay->OnAttach();
 	}
 
-	Application::~Application()
-	{
-
-	}
-
 	void Application::Run()
 	{
 		while (m_Running)
 		{
-			glClearColor(0.1f, 0.1f, 0.1f, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
+			RenderCommand::ClearColor({ 0.1f, 0.1f, 0.1f, 1 });
+			RenderCommand::Clear();
+
+			Renderer::BeginScene();
 
 			m_BlueShader->Bind();
-			m_SquareVA->Bind();
-			glDrawElements(GL_TRIANGLES, m_SquareVA->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
-
+			Renderer::Submit(m_SquareVA);
+			
 			m_Shader->Bind();
-			m_VertexArray->Bind();
-			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+			Renderer::Submit(m_VertexArray);
+
+			Renderer::EndScene();
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
