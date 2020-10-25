@@ -3,7 +3,8 @@
 #include "Phoenix/Core.hpp"
 #include "Phoenix/Events/Event.hpp"
 
-namespace Phoenix {
+namespace Phoenix 
+{
 
 	struct PX_API WindowProps
 	{
