@@ -1,5 +1,7 @@
 # Phoenix Engine
 
+[![CodeFactor](https://www.codefactor.io/repository/github/emperoryp7/phoenix-engine/badge)](https://www.codefactor.io/repository/github/emperoryp7/phoenix-engine)
+
 The engine aims for faster 2D rendering using OpenGL (as of now) with Glfw window and ImGui interface.
 
 This engine is inspired by TheCherno's Hazel Engine. The engine uses extensive and core MS Visual C++.
