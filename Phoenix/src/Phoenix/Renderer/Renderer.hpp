@@ -17,6 +17,6 @@ namespace Phoenix
 
 		inline static RendererAPI::API GetAPI() { return RendererAPI::GetAPI(); }
 	private:
-		static glm::mat4 m_ViewProjectionMatrix;
+		static glm::mat4 m_VPMatrix;
 	};
 }

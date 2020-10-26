@@ -2,6 +2,7 @@
 
 #include "Phoenix/Core.hpp"
 #include "Phoenix/Events/Event.hpp"
+#include "Phoenix/Timestep.hpp"
 
 namespace Phoenix
 {
@@ -13,7 +14,7 @@ namespace Phoenix
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(const Timestep&) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& e) {}
 

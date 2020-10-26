@@ -12,7 +12,7 @@ namespace Phoenix
 
 		const glm::mat4& GetProjection() { return m_ProjectionMatrix; }
 		const glm::mat4& GetView() { return m_ViewMatrix; }
-		const glm::mat4& GetViewProjection() { return  m_ViewProjectionMatrix; }
+		const glm::mat4& GetVP() { return  m_VPMatrix; }
 
 		const float& GetRotation() { return m_Rotation; }
 		inline void SetRotation(const float& r) { m_Rotation = r; CalculateViewMatrix(); }
@@ -22,7 +22,7 @@ namespace Phoenix
 
 		void CalculateViewMatrix();
 
-		glm::mat4 m_ViewMatrix, m_ProjectionMatrix, m_ViewProjectionMatrix;
+		glm::mat4 m_ViewMatrix, m_ProjectionMatrix, m_VPMatrix;
 		glm::vec3 m_Position;
 		float m_Rotation;
 	};

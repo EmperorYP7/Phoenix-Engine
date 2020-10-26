@@ -10,6 +10,15 @@
 
 #include "Phoenix/ImGui/ImGui.hpp"
 
+//---------------Renderer----------------
+
+#include "Phoenix/Renderer/Camera/OrthoCamera.hpp"
+#include "Phoenix/Renderer/Renderer.hpp"
+#include "Phoenix/Renderer/RenderCommand.hpp"
+#include "Phoenix/Renderer/Buffer.hpp"
+#include "Phoenix/Renderer/Shader.hpp"
+#include "Phoenix/Timestep.hpp"
+
 
 //-----------Entry Point------------
 
