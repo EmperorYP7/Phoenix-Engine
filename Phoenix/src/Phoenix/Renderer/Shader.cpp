@@ -2,6 +2,7 @@
 #include "Shader.hpp"
 
 #include <glad/glad.h>
+#include <glm/gtc/type_ptr.hpp>
 
 namespace Phoenix
 {
@@ -110,6 +111,12 @@ namespace Phoenix
 		// Always detach shaders after a successful link.
 		glDetachShader(m_RendererID, vertexShader);
 		glDetachShader(m_RendererID, fragmentShader);
+	}
+
+	void Shader::UploadMat4(const std::string& name, const glm::mat4& matrix)
+	{
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
 	}
 
 	Shader::~Shader()

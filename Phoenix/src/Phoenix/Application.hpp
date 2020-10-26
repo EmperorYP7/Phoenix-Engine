@@ -8,6 +8,7 @@
 #include "Phoenix/Renderer/Shader.hpp"
 #include "Phoenix/Renderer/Buffer.hpp"
 #include "Phoenix/Renderer/VertexArray.hpp"
+#include "Phoenix/Renderer/Camera/OrthoCamera.hpp"
 
 namespace Phoenix 
 {
@@ -15,7 +16,7 @@ namespace Phoenix
 	{
 	public:
 		Application();
-		virtual ~Application() = default;
+		virtual ~Application();
 
 		void Run();
 
@@ -33,6 +34,7 @@ namespace Phoenix
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+		OrthoCamera m_OrthoCamera;
 
 		std::shared_ptr<Shader> m_Shader;
 		std::shared_ptr<VertexArray> m_VertexArray;
