@@ -1,6 +1,7 @@
 # Phoenix Engine
 
 [![CodeFactor](https://www.codefactor.io/repository/github/emperoryp7/phoenix-engine/badge)](https://www.codefactor.io/repository/github/emperoryp7/phoenix-engine)
+![MSBuild](https://github.com/EmperorYP7/Phoenix-Engine/workflows/MSBuild/badge.svg)
 
 The engine aims for faster 2D rendering using OpenGL (as of now) with Glfw window and ImGui interface.
 
